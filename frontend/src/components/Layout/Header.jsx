@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import Logo from "./Logo";
 import { navItems } from "../../constants";
 import { Menu, X } from "lucide-react";
+import { useNavigate } from "react-router-dom"; 
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-
+  const navigate = useNavigate(); 
   return (
     <nav
       className="fixed w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-2 
@@ -16,7 +17,7 @@ const Header = () => {
       <div className="flex items-center justify-between">
         {/* Logo + Title */}
         <div
-          onClick={() => (window.location.href = "/")}
+          onClick={() => navigate("/")}
           className="flex items-center gap-2 cursor-pointer hover:opacity-90 transition"
         >
           <Logo />
@@ -38,6 +39,7 @@ const Header = () => {
           ))}
           {/* Sign In button */}
           <button
+            onClick={() => navigate("/sign-in")} // ✅ works now
             className="flex items-center gap-2 rounded-full text-sm 
             bg-gradient-to-r from-amber-400 to-yellow-500 
             text-black px-5 py-2 font-semibold 
@@ -77,6 +79,10 @@ const Header = () => {
             </a>
           ))}
           <button
+            onClick={() => {
+              setMenuOpen(false);
+              navigate("/sign-in");
+            }}
             className="rounded-full bg-gradient-to-r from-amber-400 to-yellow-500 
             px-5 py-2 text-sm font-semibold text-black 
             shadow-lg hover:scale-105 transition-transform"

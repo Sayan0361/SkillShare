@@ -4,7 +4,7 @@ import Leaderboard from './Leaderboard';
 import HeroSection from './HeroSection';
 const MainContent = () => {
   return (
-    <main className="flex flex-col pt-15 w-full min-h-screen bg-gradient-to-tr from-[#fffaf0] via-[#fff8e7] to-[#fff4d6] relative overflow-hidden">
+    <main className="flex flex-col pt-20 w-full min-h-screen bg-gradient-to-tr from-[#fffaf0] via-[#fff8e7] to-[#fff4d6] relative overflow-hidden">
       
       {/* Decorative gradient overlay for depth */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(255,235,200,0.4),transparent_60%)] pointer-events-none"></div>

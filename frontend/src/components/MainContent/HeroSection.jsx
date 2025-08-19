@@ -1,6 +1,6 @@
 import React from "react";
 import FeaturedImage from "./FeaturedImage";
-
+import { ScratchToReveal } from "@/components/magicui/scratch-to-reveal";
 const HeroSection = () => {
   return (
     <section className="relative overflow-hidden w-full">
@@ -38,11 +38,28 @@ const HeroSection = () => {
           </div>
 
           {/* Right Side: Featured Image */}
-          <div className="flex justify-center lg:justify-end">
-            <div className="w-full max-w-md lg:max-w-lg rounded-2xl overflow-hidden shadow-xl transform hover:scale-105 transition-transform duration-500">
-              <FeaturedImage />
+          <div className="flex justify-center lg:justify-end relative">
+            <div className="w-full max-w-md lg:max-w-lg rounded-2xl overflow-hidden shadow-xl transform hover:scale-105 transition-transform duration-500 relative">
+              
+              {/* ScratchToReveal */}
+              <ScratchToReveal
+                width={450}
+                height={300}
+                minScratchPercentage={50}
+                gradientColors={["#fef3c7", "#fde68a", "#fcd34d"]}
+              >
+                <FeaturedImage />
+              </ScratchToReveal>
+
+              {/* Overlay Instruction */}
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <p className="text-[#1c180d] text-xl sm:text-2xl font-semibold bg-white/70 px-4 py-2 rounded-full shadow-md animate-pulse">
+                  Scratch here!
+                </p>
+              </div>
             </div>
           </div>
+
         </div>
       </div>
 

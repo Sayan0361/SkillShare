@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { skills } from "../../constants";
+import { Marquee } from "@/components/magicui/marquee";
 
 const ITEMS_PER_PAGE = 4;
+
 const TrendingSkills = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -16,17 +18,37 @@ const TrendingSkills = () => {
   };
 
   return (
-    <div className="px-4 sm:px-8 md:px-12 flex flex-1 justify-center py-5">
-      <div className="layout-content-container flex flex-col max-w-[960px] flex-1">
+    <div className="px-4 sm:px-8 md:px-12 flex flex-1 justify-center py-10">
+      <div className="layout-content-container flex flex-col max-w-[960px] flex-1 gap-8">
+        
+        {/* Marquee Showcase */}
+        <div className="rounded-xl border border-[#f4f3e6] bg-amber-100 shadow-sm py-3">
+          <Marquee className="gap-12 text-lg font-semibold text-[#1c1b0d]">
+            {skills.map((skill, index) => (
+              <span key={index} className="flex items-center gap-2">
+                <img
+                  src={skill.image}
+                  alt={skill.title}
+                  className="w-8 h-8 rounded-md shadow-sm"
+                />
+                {skill.title}
+              </span>
+            ))}
+          </Marquee>
+        </div>
+
         {/* Grid of skills */}
         <div className="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-4 p-4">
           {currentSkills.map((skill, index) => (
-            <div key={index} className="flex flex-col gap-3 pb-3">
+            <div
+              key={index}
+              className="flex flex-col gap-3 pb-3 rounded-xl bg-[#fffefb] shadow hover:shadow-md transition"
+            >
               <div
-                className="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl shadow-sm"
+                className="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl"
                 style={{ backgroundImage: `url("${skill.image}")` }}
               ></div>
-              <div>
+              <div className="px-1">
                 <p className="text-[#1c1b0d] text-base font-medium leading-normal">
                   {skill.title}
                 </p>
@@ -56,7 +78,7 @@ const Pagination = ({ currentPage, totalPages, goToPage }) => {
       <button
         onClick={() => goToPage(currentPage - 1)}
         disabled={currentPage === 1}
-        className="flex size-10 items-center justify-center disabled:opacity-40"
+        className="flex size-10 items-center justify-center rounded-full hover:bg-[#f4f3e6] disabled:opacity-40"
       >
         <CaretLeftIcon />
       </button>
@@ -81,7 +103,7 @@ const Pagination = ({ currentPage, totalPages, goToPage }) => {
       <button
         onClick={() => goToPage(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className="flex size-10 items-center justify-center disabled:opacity-40"
+        className="flex size-10 items-center justify-center rounded-full hover:bg-[#f4f3e6] disabled:opacity-40"
       >
         <CaretRightIcon />
       </button>
