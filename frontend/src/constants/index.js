@@ -25,11 +25,66 @@ export const navItems = [
 //   ];
 
 export const leaderboardData = [
-    { rank: 1, skill: "Fastest Finger Snapper", votes: "12,345" },
-    { rank: 2, skill: "Backward Talking Expert", votes: "10,987" },
-    { rank: 3, skill: "Eyebrow Dancing Pro", votes: "9,500" },
-    { rank: 4, skill: "Toe Writing Artist", votes: "8,200" },
-    { rank: 5, skill: "Armpit Fart Symphony", votes: "7,000" }
+    {
+      rank: 1,
+      title: "Can whistle with my nose",
+      votes: "1234 votes",
+      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCpAujXCjcvNNEIDN8QpjH657THp4ERiu3Wvv1FCVoY3hMNL3qdk7q5WvfLZ8rOBesAm46WzFIn4FDE7p_31Yd12dCsRbl9kzQibr3A98LacZuM-bNi6Ei1hZ2-zhbpHYoklBhBsm2mgsN_59ip5FruiQ15GTOs41He--PsA1y-TLw4mgbLBpatUM_FipKsnx12Kt5f4Le8DOPzN49OgvoOSF_WVfWakljX77x-bElTag8INfjm3_zaxEVAFwj3K2zWJdoEa_gfpxK4"
+    },
+    {
+      rank: 2,
+      title: "Can balance a spoon on my nose",
+      votes: "1122 votes",
+      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuB9LRypkXnzITD3lmRIumTXa5Fm58Cye9mX3LmqTuDp24OWh70D8XIqI7NdD9EXyS6jRp2k24UrTW-K3HU3Kefc2drk47UTYDyJqH__J7YanxyZwQQid_23RnLmCODeEM7W7hS1xvsmZC7iJsNiYFxXG9ckqw5W88j1yuF8k5YObYGiCbQsDQZT6X51J1i28ZHvk5h1g0NcH8C11vPx-unluLLkypqG3_8bA5RF7p7O7g7KKmb6DixUqFhNfKdp7YZRz_u75HkjLxC9"
+    },
+    {
+      rank: 3,
+      title: "Can make a perfect paper airplane",
+      votes: "1011 votes",
+      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBXCdWpIZdOhbpMwGcf2XwdivxTnEJPDw3lc2pJt9Pq-adNBGRPQjCiJRbtgvfDa-4GD-sH4Sd2pfWxX2xZA_V2huWbBzZKQZJj-qc0ya3w51sbBbNUoqAckKuQzu0r3bw26Wm88YRobZ6pVTzD5RAPHh791pKBvvnW9aB_-VpLWv1aYrdqtYGesQ9G_d9f-J4DQ0Jl3Bke2R09L904aG42j--A27WfDfcpt14cgO_BHxnUhKjyVvGa5wSqJsPueoRBANj3mfIYVNSq"
+    },
+    {
+      rank: 4,
+      title: "Can identify any bird by its call",
+      votes: "987 votes",
+      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBgGieTtivLiKcHZMLv7gPHfEXwPADyGJaFdvR0g15aRTQR4JmdhKbMPDPmYVT_tRPO2oYbEGvjqAkZeBr7ZgR1xJDYz7s1Du75kZn1TPXUi6BMFV96rt_X-x9HfkNRPSSM7NSfzm5qtONCffPOg4JPnGuThEqB1Nnk7lnuV543D1amF4iokR2dYjP0452gxQnydOdhYMr6ygg6sI8XM4ux4sxf-xxa0N_8vsAmrdHivZv3L5SZGZx45puRbOsA66CusPGrcI5QCLxU"
+    },
+    {
+      rank: 5,
+      title: "Can solve a Rubik's Cube blindfolded",
+      votes: "876 votes",
+      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDHMqG4kijkTlVK98Ftto0ygUcU2YLQdOXzNS9RYxaSa1P-8986sRn3oKwvh9g4bo_2yRm_HZcI0K8QlgYnHagSSfQlO1lsXTKWFcnqwH45PJNeBWtlmtzKqpJMjNKQk5xE1ABxI2-eQf_d-45WJL0PQlrcL9Et9mgxN3ugr-46_-ONt25lOC3x2WsHMVcBQovxqS1Zy8W11Vsi0NEozPtIp_PThP_VG1rIu6ZwJgiljSZH-hwLl8ozpB__Nu3d3t7yJgFYEd2hspdq"
+    },
+    {
+      rank: 6,
+      title: "Can name all the state capitals",
+      votes: "765 votes",
+      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCP804tHmHS2zooopg8o4XZc-Hs7PXUb6CE6kXpc1QpbXpLUCFmIvo6HQi1HHU3zSnQhrPzbtPZp64NnvzZrqteemFWkPpgADKRbDRJs-8f5lI9Bd40TzRP-_6G0W91KjcEOzm31otFQmMsg_hfcK1d9TCsMLVvAfNeHMawA_q1ycKrZk8dZHjDs0UL5bzIJNUR5-C8BMkpteJYteojHjtY214ojoxdTRjkBvpF-6qBOr1HzKGh5LypSgp1N31IRzkA3hn0WZF4LZ_W"
+    },
+    {
+      rank: 7,
+      title: "Can type with my eyes closed",
+      votes: "654 votes",
+      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAfDHDnj26m-4kBAqefhobFIlNe2ZvtuDmcxrOvI1p3R4HioOhFHzzZj-YBImBq0X77qCWJtGzKmvDWdQrb-p5HgsZhXJ17TlzkiW8Eo28q9LX0xvSU_irSU9M7Zq4lLKIybdM_Guzjl1VeCn1DjTSzESApHW7GRFF5DzfvvEi9KLOzYDLveDNDbnl-s3D-AG4GYxSsAf_msxXJJ5Z4_9Rh5uPTKiuhjK6wWqfW_ZPEiJs-d5zylLXwSFwxhWBfLeAEyESUX5FgzQD_"
+    },
+    {
+      rank: 8,
+      title: "Can fold a fitted sheet perfectly",
+      votes: "543 votes",
+      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuC0p-sNz8spKisqMzFAe5ML9--FSgX99XlGNEB_aE8aExdXZZhvnZoS5UrHZQZP_AoGPrFerJig_fHsmUECc9dbL6RG6shxzKBA3Y5lEYeeJCn16w-O8GMX_wbNJ2QMpEPlEwzKvysrVweQF38ZDc4mZMZGLE0eJSAMsRE4JVjnHPvtp2aO39IA9nI9MHYrpbUZnW2GiGevrc9POssfVV-0UltdmyKcsBhm6tF4cUBVHWa1IPUXzMvNU3VsyGqcbKGXhK2cfIJZF1gk"
+    },
+    {
+      rank: 9,
+      title: "Can recite the alphabet backwards",
+      votes: "432 votes",
+      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCTJuYMxlxqLPHGJsgknDkNrF12dKyTCzD1a5GXItY-qAN5da1RgA5dnHym2g41doilsidbdQCDBmAFmiwedR9IriLyjFlAnQ3aFdirOqL44RpIat6UZR-CeDfsR28BwEYgZ3iEqsZazyJ0EJFt8SOYrbIPYguKj1xWJnrLqTR_RmCg-3ELvdtA6aM4OdwAm30rdAG5G1Ou92RL3jbCmnu3DsWZ6GQWyfEafJBXnJnvgfMxPWWJp2TPGPT3lz5RvsE6IltU8biVvusH"
+    },
+    {
+      rank: 10,
+      title: "Can touch my nose with my tongue",
+      votes: "321 votes",
+      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDjeXhVv4mZcnM8PDzRjN-2vC78nSpWQ6djDGZ49ku9wSAZ4FicQi_CxyiSUvdYiBapN-pJc0MVm2VaxFQoTVyT8F2rsR0AKg0WdwiZEM-k0apnKTLD8dhJ2NVgUwY_Y3MrL9t-kHWjKMLaTQ9rVVRlMEKQjJYpMIuj6FovFbknj7Re835ajV5AD3aIA4XcLx9WhnBwD45QCyYmjniR2prhVpxw4tNjdP2qN5fHsroyg4a7vsgau-wBrfNTGXdrGgKCty1AUC__szzN"
+    }
   ];
 
 export const skills = [

@@ -1,14 +1,11 @@
 import React, { useState } from "react";
 import { skills } from "../../constants";
 
-const ITEMS_PER_PAGE = 4; // adjust how many skills per page
-
+const ITEMS_PER_PAGE = 4;
 const TrendingSkills = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const totalPages = Math.ceil(skills.length / ITEMS_PER_PAGE);
-
-  // figure out which items to show
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
   const currentSkills = skills.slice(startIndex, startIndex + ITEMS_PER_PAGE);
 
