@@ -4,6 +4,9 @@ import Home from './pages/Home';
 import UploadSkill from './pages/UploadSkill';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/Signup.';
+import LeaderboardPage from './pages/LeaderboardPage';
+import ChallengeMode from './pages/ChallengeMode';
+import HallOfFame from './pages/HallOfFame';
 
 
 const App = () => {
@@ -14,6 +17,9 @@ const App = () => {
         <Route path="/upload" element={<UploadSkill/>}/>
         <Route path="/sign-in" element={<SignIn/>}/>
         <Route path="/sign-up" element={<SignUp/>}/>
+        <Route path="/leaderboard" element={<LeaderboardPage/>}/>
+        <Route path="/challenge" element={<ChallengeMode/>}/>
+        <Route path="/hall-of-fame" element={<HallOfFame/>}/>
       </Routes>
     </Router>
   );

@@ -6,23 +6,81 @@ export const navItems = [
   { label: "Hall of Fame", href: "/hall-of-fame" },
 ];
 
-// export const skills = [
-//     {
-//       title: "Rock Juggling Master",
-//       description: "Watch as this individual defies gravity with their rock juggling prowess.",
-//       image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAwvHAtQUuLhDOEXYLZxeLqII1rqPZztzYzj2KyZpl5XoopzUfuF5FyZTwPj-49dMO54T5kw5hjfBzr9mbfXiBUjNeGzHxiouAhUAq3XoR80NFRtG6WCwBfaYVsjAszgLw-qq5GxiXu2RQhHdQL8FY10UwdN3jMI9Q5Yn45J19xOE-54lKsYE0a0Cwb597cfy05IQv-lqZyc3sBDhQ37Qvswh9jDWSfV3xw6ifASJ3V002qTd7HTj1PwvYh0iOtRstlmwFAeGf9hMa8"
-//     },
-//     {
-//       title: "Nose Whistle Virtuoso",
-//       description: "Prepare to be amazed by the unique melodies created by this nose whistle expert.",
-//       image: "https://lh3.googleusercontent.com/aida-public/AB6AXuA2xO8Tq32YrOZOReXWemURz0lq_ce7Km1dar-bOnP9bpUN2fDW6-JMF5FcJheSzAwDXwP_MYIpgEYDDWhRFTSvulTuhMNCEDl2WrNuCWzF_qR_ddA69YFpmO_1RU3iz3_8EEQxiygx1IfeuIH2SxgYJRCMz8ZOR9gS_mSAosht6yfRtQmkEUg3_FZ0EjwfiRu3Pmv2-TwTQlccwOF6KbHDu-1-xxq_7-EAg68vJjUOMgXnxK1iwv8F_W0xa2ElftsYSKLCSMWRg92o"
-//     },
-//     {
-//       title: "Spoon Balancing Champion",
-//       description: "Witness the incredible balance of this spoon balancing champion.",
-//       image: "https://lh3.googleusercontent.com/aida-public/AB6AXuA3tuzdmq9BRZyx2LjrxgGoayBwVsL9XGuRa7zXlJ0CNNYfrrdQ0_mbZbbycXhjOuA_98EL_PFtOgtutLCwwV4YdWVaeufmMERFxS9Ly7GB1KfHpjXnfUas2zFvkAmPkZVXceGpIkCPcJ0h4QyPM7xgojDF_O_cvbO-R1uNBkIDAE4Svw9Ava7XjN08BVlyFyk4--7Wg3z64O9L1TseXuVBNYL0f2-NpER7g7HTOJziMzBI7ytdQ1z3SNDebR_CLU41Ur0XaAS1yFYk"
-//     }
-//   ];
+export const featuredChallenges = [
+  {
+    id: 1,
+    title: "Nose Whistle Symphony",
+    description: "Create a musical piece using only nose whistling",
+    participants: 243,
+    duration: "3 days left",
+    image: "https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=400&h=250&fit=crop"
+  },
+  {
+    id: 2,
+    title: "Extreme Spoon Balancing",
+    description: "Balance the maximum number of spoons on your body",
+    participants: 187,
+    duration: "1 day left",
+    image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400&h=250&fit=crop"
+  },
+  {
+    id: 3,
+    title: "Potato Peeling Race",
+    description: "Peel potatoes using only your teeth - fastest wins!",
+    participants: 321,
+    duration: "5 days left",
+    image: "https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=400&h=250&fit=crop"
+  }
+];
+
+export const recentVideos = [
+  {
+    id: 1,
+    title: "I balanced 47 spoons on my face",
+    user: "SpoonMaster",
+    views: "12.4K",
+    likes: "1.2K",
+    comments: "243",
+    thumbnail: "https://images.unsplash.com/photo-1544148103-0773bf10d330?w=400&h=250&fit=crop",
+    duration: "4:32"
+  },
+  {
+    id: 2,
+    title: "Eating a lemon without reacting",
+    user: "StoneFace",
+    views: "8.7K",
+    likes: "987",
+    comments: "156",
+    thumbnail: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&h=250&fit=crop",
+    duration: "2:15"
+  },
+  {
+    id: 3,
+    title: "Alphabet backwards in 8.2 seconds",
+    user: "WordWizard",
+    views: "15.2K",
+    likes: "2.1K",
+    comments: "412",
+    thumbnail: "https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=400&h=250&fit=crop",
+    duration: "3:47"
+  }
+];
+
+export const skillOfTheDay = {
+  title: "Extreme Cup Stacking",
+  description: "Stack and unstack 12 cups in a specific pattern in under 6 seconds using only one hand while blindfolded.",
+  user: "CupStackerPro",
+  votes: 842,
+  image: "https://images.unsplash.com/photo-1577937921409-5e3f4b2d4c84?w=400&h=300&fit=crop"
+};
+
+export const communityStats = {
+  totalSkills: 12487,
+  totalVotes: 284591,
+  activeUsers: 12432,
+  challengesCompleted: 3842
+};
+
 
 export const leaderboardData = [
     {
@@ -149,3 +207,258 @@ export const skills = [
       image: "https://lh3.googleusercontent.com/aida-public/AB6AXuA2FVOJEIpBaBo6NJvy1CTzSZlOsnkOQ7JzDHzA-T4mG0N_eYCeU_7J7LBmnCe5yNdXtZcpun4Lxc3pavlDZ028ax_xLK_4sv4RrOx0vNdVpPisi8o7c_jjBJxIP6JpHIXslWz8ROLHuGBEye3kJ8MuxhJw2Nem6Dg0GjlWp5r1bsskcCOAzlfljCj3wnAYGheFQ6ezeBR64xvSCzcFnNu4j3WrcBERmFKFqxw3wgMPUjuJZYhyi7FspydVISZdrrR-hUzvAqV9Leyk"
     }
   ];
+
+// for the leaderboardpage.jsx: 
+// Mock data for the leaderboard (would typically come from an API)
+export const initialLeaderboardData = [
+  {
+    id: 1,
+    title: "Can whistle with my nose",
+    votes: 1254,
+    rank: 1,
+    image: "https://images.unsplash.com/photo-1516534775068-ba3e7458af70?w=150&h=150&fit=crop&crop=face"
+  },
+  {
+    id: 2,
+    title: "Eat a whole lemon without making a face",
+    votes: 987,
+    rank: 2,
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face"
+  },
+  {
+    id: 3,
+    title: "Balance a spoon on my nose for 5 minutes",
+    votes: 843,
+    rank: 3,
+    image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face"
+  },
+  {
+    id: 4,
+    title: "Recite the alphabet backwards in under 10 seconds",
+    votes: 721,
+    rank: 4,
+    image: "https://images.unsplash.com/photo-1552058544-f2b08422138a?w=150&h=150&fit=crop&crop=face"
+  },
+  {
+    id: 5,
+    title: "Fold a fitted sheet perfectly",
+    votes: 632,
+    rank: 5,
+    image: "https://images.unsplash.com/photo-1567532939604-b6b5b0db1604?w=150&h=150&fit=crop&crop=face"
+  },
+  {
+    id: 6,
+    title: "Identify any brand of peanut butter by taste alone",
+    votes: 587,
+    rank: 6,
+    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face"
+  },
+  {
+    id: 7,
+    title: "Solve a Rubik's cube with feet while juggling",
+    votes: 512,
+    rank: 7,
+    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face"
+  },
+  {
+    id: 8,
+    title: "Imitate the sound of a boiling kettle perfectly",
+    votes: 456,
+    rank: 8,
+    image: "https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?w=150&h=150&fit=crop&crop=face"
+  },
+  {
+    id: 9,
+    title: "Type 100 WPM with one hand",
+    votes: 398,
+    rank: 9,
+    image: "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=150&h=150&fit=crop&crop=face"
+  },
+  {
+    id: 10,
+    title: "Name all Kardashian family members by photo",
+    votes: 345,
+    rank: 10,
+    image: "https://images.unsplash.com/photo-1517282009859-f000ec3b26fe?w=150&h=150&fit=crop&crop=face"
+  }
+];
+
+// Challenge Mode data:
+export const initialChallenges = [
+  {
+    id: 1,
+    title: "Eat a lemon without making a face",
+    description: "Record yourself eating a whole lemon without any facial reactions. The most stoic performance wins!",
+    videoUrl: "https://example.com/video1",
+    likes: 243,
+    comments: 42,
+    shares: 18,
+    user: {
+      name: "LemonMaster",
+      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face"
+    },
+    timestamp: "2 hours ago",
+    tags: ["food", "reaction", "difficult"]
+  },
+  {
+    id: 2,
+    title: "Balance 5 spoons on your face",
+    description: "How many spoons can you balance on your face at once? Show us your record!",
+    videoUrl: "https://example.com/video2",
+    likes: 187,
+    comments: 29,
+    shares: 12,
+    user: {
+      name: "SpoonGuru",
+      avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face"
+    },
+    timestamp: "5 hours ago",
+    tags: ["balance", "skill", "funny"]
+  },
+  {
+    id: 3,
+    title: "Recite the alphabet backwards in under 10 seconds",
+    description: "Think you know your ABCs? Try saying them backwards at lightning speed!",
+    videoUrl: "https://example.com/video3",
+    likes: 321,
+    comments: 56,
+    shares: 24,
+    user: {
+      name: "AlphabetNinja",
+      avatar: "https://images.unsplash.com/photo-1552058544-f2b08422138a?w=150&h=150&fit=crop&crop=face"
+    },
+    timestamp: "1 day ago",
+    tags: ["speech", "memory", "fast"]
+  }
+];
+
+
+export const initialComments = {
+  1: [
+    {
+      id: 1,
+      user: "CitrusLover",
+      text: "I tried this and failed miserably! My face looked like I'd eaten a whole jar of pickles 😂",
+      timestamp: "1 hour ago"
+    },
+    {
+      id: 2,
+      user: "SourFace",
+      text: "Pro tip: Use a sweet lemon variety, it's slightly easier!",
+      timestamp: "45 minutes ago"
+    }
+  ],
+  2: [
+    {
+      id: 1,
+      user: "UtensilFan",
+      text: "My record is 7 spoons! Will post video soon!",
+      timestamp: "3 hours ago"
+    }
+  ],
+  3: [
+    {
+      id: 1,
+      user: "WordWizard",
+      text: "Took me 3 days of practice but finally got it in 9.8 seconds!",
+      timestamp: "12 hours ago"
+    },
+    {
+      id: 2,
+      user: "LanguageGeek",
+      text: "This is actually a great brain exercise!",
+      timestamp: "8 hours ago"
+    },
+    {
+      id: 3,
+      user: "SpeedDemon",
+      text: "Challenge accepted! My time is 8.2 seconds 💪",
+      timestamp: "5 hours ago"
+    }
+  ]
+};
+
+
+export const initialHallOfFameData = [
+  {
+    id: 1,
+    title: "World Record: 47 Spoons Balanced on Face",
+    description: "Held the world record for balancing the most spoons on a human face for over 3 years. Perfected the art of facial cutlery arrangement through years of dedicated practice.",
+    user: {
+      name: "SpoonFacedSam",
+      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face"
+    },
+    year: 2022,
+    votes: 5289,
+    likes: 1243,
+    shares: 428,
+    tags: ["world record", "balance", "cutlery"],
+    media: "https://example.com/video1",
+    achievements: ["Guinness World Record", "3-Time Champion", "Spoon Master"]
+  },
+  {
+    id: 2,
+    title: "Fastest Time to Peel 10 Potatoes with Teeth",
+    description: "Completed the seemingly impossible task of peeling 10 potatoes using only teeth in under 4 minutes. Dental professionals do not recommend trying this at home.",
+    user: {
+      name: "DentalDaredevil",
+      avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face"
+    },
+    year: 2021,
+    votes: 4872,
+    likes: 987,
+    shares: 312,
+    tags: ["food", "dental", "speed"],
+    media: "https://example.com/video2",
+    achievements: ["Golden Tooth Award", "Potato Council Recognition"]
+  },
+  {
+    id: 3,
+    title: "Longest Continuous Nose Whistle - 45 Minutes",
+    description: "Performed a continuous nasal whistle for 45 minutes without taking a breath (through the mouth anyway). Perfected the circular nose breathing technique.",
+    user: {
+      name: "NoseMusician",
+      avatar: "https://images.unsplash.com/photo-1552058544-f2b08422138a?w=150&h=150&fit=crop&crop=face"
+    },
+    year: 2023,
+    votes: 5124,
+    likes: 1542,
+    shares: 587,
+    tags: ["music", "endurance", "breathing"],
+    media: "https://example.com/video3",
+    achievements: ["Golden Nostril Award", "Symphony Hall Performance"]
+  },
+  {
+    id: 4,
+    title: "Most Marshmallows Fitted in Mouth While Reciting Shakespeare",
+    description: "Managed to fit 7 standard marshmallows in mouth while clearly reciting the 'To be or not to be' soliloquy from Hamlet. A true display of diction dedication.",
+    user: {
+      name: "MarshmallowMonologue",
+      avatar: "https://images.unsplash.com/photo-1567532939604-b6b5b0db1604?w=150&h=150&fit=crop&crop=face"
+    },
+    year: 2020,
+    votes: 4321,
+    likes: 876,
+    shares: 245,
+    tags: ["food", "theater", "speech"],
+    media: "https://example.com/video4",
+    achievements: ["Theater Guild Award", "Confectionery Recognition"]
+  },
+  {
+    id: 5,
+    title: "Longest Duration Spinning a Book on Finger - 8.7 Minutes",
+    description: "Maintained a standard paperback book spinning on index finger for 8 minutes and 42 seconds. Developed a special technique to account for uneven weight distribution.",
+    user: {
+      name: "BookSpinner",
+      avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face"
+    },
+    year: 2019,
+    votes: 3987,
+    likes: 765,
+    shares: 198,
+    tags: ["balance", "skill", "precision"],
+    media: "https://example.com/video5",
+    achievements: ["Library Association Award", "Physics Department Recognition"]
+  }
+];
+

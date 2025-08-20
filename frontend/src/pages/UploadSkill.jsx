@@ -1,13 +1,11 @@
 import Layout from '@/components/Layout/Layout';
 import React from 'react';
-import { Wand2, FileText, Video } from "lucide-react"; // playful icons
-
+import { Wand2, FileText, Video } from "lucide-react"; 
 const UploadSkill = () => {
   return (
     <Layout>
       <div className="px-6 pt-25 sm:px-10 lg:px-40 flex flex-1 justify-center py-10  bg-gradient-to-tr from-[#fffaf0] via-[#fff8e7] to-[#fff4d6]">
         <div className="w-full max-w-2xl bg-gradient-to-tr from-[#fffaf0] via-[#fff8e7] to-[#ffd768] rounded-2xl shadow-xl p-8">
-          
           {/* Heading */}
           <h2 className="text-[#1c1b0d] text-center text-3xl font-extrabold leading-tight pb-6">
             ✨ Share Your Useless Skill ✨

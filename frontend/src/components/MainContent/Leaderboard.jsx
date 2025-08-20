@@ -1,7 +1,7 @@
 import React from 'react';
 import { leaderboardData } from '../../constants';
 
-const LeaderboardPage = () => {
+const Leaderboard = () => {
   return (
     <div className="px-4 sm:px-8 md:px-20 lg:px-40 flex flex-1 justify-center py-6">
       <div className="layout-content-container flex flex-col w-full max-w-[960px] flex-1 gap-4">
@@ -9,7 +9,7 @@ const LeaderboardPage = () => {
           <div
             key={item.rank}
             className="flex items-center justify-between gap-4 bg-white rounded-xl shadow-sm px-4 py-3 min-h-[72px] 
-                       hover:shadow-md hover:scale-[1.01] transition-all duration-200 ease-in-out"
+                      hover:shadow-md hover:scale-[1.01] transition-all duration-200 ease-in-out"
           >
             {/* Left side: image + details */}
             <div className="flex items-center gap-4 flex-1 min-w-0">
@@ -50,4 +50,4 @@ const LeaderboardPage = () => {
   );
 };
 
-export default LeaderboardPage;
+export default Leaderboard;

@@ -1,6 +1,7 @@
 import React from "react";
 import FeaturedImage from "./FeaturedImage";
 import { ScratchToReveal } from "@/components/magicui/scratch-to-reveal";
+
 const HeroSection = () => {
   return (
     <section className="relative overflow-hidden w-full">
