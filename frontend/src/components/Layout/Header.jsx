@@ -8,14 +8,15 @@ import { supabase } from "../../../config/supabase.js";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false); // For the username dropdown
+  const [dropdownOpen, setDropdownOpen] = useState(false); 
   const navigate = useNavigate();
   const { user, session } = useAuth();
 
   const handleLogout = async () => {
     try {
       await supabase.auth.signOut();
-      navigate('/sign-in');
+      setDropdownOpen(false); // Close dropdown after logout
+      window.location.reload(); // Refresh the page
     } catch (error) {
       console.error('Error signing out:', error);
     }
@@ -76,7 +77,7 @@ const Header = () => {
                   <button
                     onClick={handleLogout}
                     className="w-full text-left px-4 py-2 text-sm font-medium 
-                    hover:bg-gray-100 transition-colors"
+                    hover:bg-gray-100 transition-colors flex items-center gap-2"
                   >
                     <LogOut size={16} /> Logout
                   </button>

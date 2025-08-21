@@ -1,5 +1,5 @@
 import Layout from '@/components/Layout/Layout';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, use } from 'react';
 import { Mail, Lock } from "lucide-react";
 import { FcGoogle } from "react-icons/fc"; 
 import { useNavigate } from "react-router-dom"; 
@@ -36,7 +36,7 @@ const SignIn = () => {
       subscription?.unsubscribe();
     };
   }, []);
-
+  
   const checkSession = async () => {
     try {
       const { data: { session: currentSession } } = await supabase.auth.getSession();
@@ -62,8 +62,9 @@ const SignIn = () => {
         setError('Error in login. Please check your credentials.');
       } else {
         setUsername(newUsername);
-        // No need to manually set session here as the onAuthStateChange listener will handle it
+        // Navigate to home and refresh the page
         navigate('/');
+        window.location.reload(); // Refresh the page to update UI state
       }
     } catch (error) {
       setError(error.message);
@@ -76,8 +77,9 @@ const SignIn = () => {
     setLoading(true);
     try {
       await signOut();
-      // No need to manually clear session here as the onAuthStateChange listener will handle it
+      // Navigate to sign-in and refresh the page
       navigate('/sign-in');
+      window.location.reload(); // Refresh the page to update UI state
     } catch (error) {
       setError(error.message);
     } finally {
@@ -96,6 +98,7 @@ const SignIn = () => {
       });
       
       if (error) throw error;
+      // For OAuth, the redirect will happen automatically
     } catch (error) {
       setError(error.message);
     } finally {
@@ -117,11 +120,15 @@ const SignIn = () => {
           {session ? (
             <div className="flex flex-col items-center gap-4">
               <p className="text-lg font-semibold text-[#1c1b0d]">Welcome back, {username}!</p>
+              {/* When user clicks go to home, the page is reloaded */}
               <button
                 className="w-full px-8 h-12 rounded-full bg-[#f59e0b] text-white font-bold text-base shadow-lg hover:bg-[#fbbf24] hover:scale-105 transition-all duration-300"
-                onClick={handleLogout}
+                onClick={() => {
+                  navigate('/');
+                  window.location.reload();
+                }}
               >
-                🚪 Log Out
+                Go to Home
               </button>
             </div>
           ) : (
