@@ -23,9 +23,15 @@ const insertSkill = async(userID, title, description, videoUrl) => {
 
 const fetchSkills = async() => {
     try {
-        const { data: skills, error: skillsError } = await supabase
-            .from('skills')
-            .select('*');
+        const { data: skills, error: skillsError  } = await supabase
+                                    .from('skills')
+                                    .select(`
+                                        id,
+                                        title,
+                                        description,
+                                        video_url,
+                                        profiles (username)
+                                    `);
     
         if (skillsError) {
             console.log('Error fetching skills:', skillsError.message);

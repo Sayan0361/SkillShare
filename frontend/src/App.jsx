@@ -12,8 +12,7 @@ import { AuthProvider, useAuth } from './lib/AuthContext';
 
 // ProtectedRoute component using useAuth to check session
 const ProtectedRoute = ({ children }) => {
-    const { user, session, loading } = useAuth();
-  
+    const { user, session, loading } = useAuth(); 
     console.log('ProtectedRoute - Auth state:', { 
       hasSession: !!session, 
       loading, 
