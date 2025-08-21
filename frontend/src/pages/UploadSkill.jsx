@@ -1,8 +1,8 @@
 import Layout from '@/components/Layout/Layout';
 import React, { useState, useEffect } from 'react';
-import { Wand2, FileText, Video, ExternalLink, Sparkles, Trophy, Users, Clock } from "lucide-react"; 
+import { Wand2, FileText, Video, ExternalLink, Sparkles, Trophy, Users, Clock, ChevronUp, Flame, Crown, Star, TrendingUp } from "lucide-react"; 
 import { useAuth } from '@/lib/AuthContext';
-import { insertSkill, fetchSkills } from '../../config/skill.config.js';
+import { insertSkill, fetchSkills, voteForSkill, removeVoteFromSkill } from '../../config/skill.config.js';
 import { useNavigate } from 'react-router-dom';
 
 const UploadSkill = () => {
@@ -15,6 +15,8 @@ const UploadSkill = () => {
     const [skills, setSkills] = useState([]);
     const [fetchingSkills, setFetchingSkills] = useState(true);
     const [activeTab, setActiveTab] = useState('all');
+    const [voting, setVoting] = useState({}); // Track which skills are being voted on
+    const [voteAnimations, setVoteAnimations] = useState({}); // Track vote animations
 
     const { user } = useAuth();
     const navigate = useNavigate();
@@ -66,10 +68,82 @@ const UploadSkill = () => {
         }
     };
 
+    const handleVote = async (skillId) => {
+        if (!user) {
+            setError('Please log in to vote for skills');
+            return;
+        }
+        
+        setVoting(prev => ({ ...prev, [skillId]: true }));
+        
+        try {
+            const skill = skills.find(s => s.id === skillId);
+            const hasVoted = skill.votes && skill.votes.includes(user.id);
+            const newVotes = hasVoted 
+                ? skill.votes.filter(id => id !== user.id)
+                : [...(skill.votes || []), user.id];
+            
+            // Optimistic UI update
+            setSkills(prevSkills => 
+                prevSkills.map(s => 
+                    s.id === skillId 
+                        ? { ...s, votes: newVotes }
+                        : s
+                )
+            );
+            
+            // Trigger vote animation
+            if (!hasVoted) {
+                setVoteAnimations(prev => ({ ...prev, [skillId]: true }));
+                setTimeout(() => {
+                    setVoteAnimations(prev => ({ ...prev, [skillId]: false }));
+                }, 1000);
+            }
+            
+            const result = hasVoted 
+                ? await removeVoteFromSkill(skillId, user.id)
+                : await voteForSkill(skillId, user.id);
+                
+            // If API call failed, revert the changes
+            if (!result) {
+                const revertedVotes = hasVoted ? skill.votes : skill.votes.filter(id => id !== user.id);
+                setSkills(prevSkills => 
+                    prevSkills.map(s => 
+                        s.id === skillId 
+                            ? { ...s, votes: revertedVotes }
+                            : s
+                    )
+                );
+                throw new Error('Failed to vote');
+            }
+            
+        } catch (error) {
+            console.error('Error voting:', error);
+            setError('Failed to vote. Please try again.');
+            // In case of error, fetch fresh data
+            const skillsData = await fetchSkills();
+            if (skillsData) {
+                setSkills(skillsData);
+            }
+        } finally {
+            setVoting(prev => ({ ...prev, [skillId]: false }));
+        }
+    };
+
     // Filter skills based on active tab
     const filteredSkills = activeTab === 'all' 
         ? skills 
         : skills.filter(skill => skill.video_url && activeTab === 'withVideo');
+
+    // Sort skills by vote count (most voted first)
+    const sortedSkills = [...filteredSkills].sort((a, b) => {
+        const aVotes = a.votes ? a.votes.length : 0;
+        const bVotes = b.votes ? b.votes.length : 0;
+        return bVotes - aVotes;
+    });
+
+    // Get top 3 most voted skills
+    const topSkills = sortedSkills.slice(0, 3);
 
     return (
         <Layout>
@@ -185,6 +259,54 @@ const UploadSkill = () => {
                     </form>
                 </div>
 
+                {/* Leaderboard Section for Top 3 Skills */}
+                {sortedSkills.length > 0 && (
+                    <div className="w-full max-w-6xl mx-auto mb-12">
+                        <h2 className="text-[#1c1b0d] text-2xl font-bold flex items-center gap-2 mb-6">
+                            <Crown size={24} className="text-yellow-500" />
+                            Top Voted Skills
+                            <span className="bg-yellow-100 text-yellow-800 text-sm font-medium ml-2 px-2.5 py-0.5 rounded-full">
+                                Community Favorites
+                            </span>
+                        </h2>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            {topSkills.map((skill, index) => {
+                                const voteCount = skill.votes ? skill.votes.length : 0;
+                                const hasVoted = user && skill.votes && skill.votes.includes(user.id);
+                                const rankClass = index === 0 
+                                    ? 'bg-gradient-to-br from-yellow-400 to-yellow-500 shadow-lg' 
+                                    : index === 1 
+                                        ? 'bg-gradient-to-br from-gray-300 to-gray-400 shadow-md' 
+                                        : 'bg-gradient-to-br from-amber-600 to-amber-700 shadow-sm';
+                                
+                                return (
+                                    <div key={skill.id} className={`relative rounded-2xl p-6 text-white ${rankClass}`}>
+                                        <div className="absolute -top-3 -left-3 w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-lg">
+                                            <span className={`text-lg font-bold ${
+                                                index === 0 ? 'text-yellow-600' : 
+                                                index === 1 ? 'text-gray-600' : 'text-amber-800'
+                                            }`}>
+                                                #{index + 1}
+                                            </span>
+                                        </div>
+                                        <h3 className="text-lg font-bold mb-2 line-clamp-1">{skill.title}</h3>
+                                        <p className="text-sm opacity-90 mb-4 line-clamp-2">{skill.description}</p>
+                                        <div className="flex items-center justify-between">
+                                            <div className="flex items-center gap-2">
+                                                <Flame size={16} className="text-white" />
+                                                <span className="text-sm font-semibold">{voteCount} votes</span>
+                                            </div>
+                                            <span className="text-xs bg-white/20 px-2 py-1 rounded-full">
+                                                @{skill.profiles?.username || 'Anonymous'}
+                                            </span>
+                                        </div>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </div>
+                )}
+
                 {/* Skills Display Section */}
                 <div className="w-full max-w-6xl mx-auto">
                     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-8">
@@ -209,6 +331,13 @@ const UploadSkill = () => {
                             >
                                 With Videos
                             </button>
+                            <button 
+                                className={`px-4 py-2 text-sm font-medium rounded-xl transition-all flex items-center gap-1 ${activeTab === 'top' ? 'bg-white text-yellow-800 shadow-sm' : 'text-yellow-600 hover:text-yellow-800'}`}
+                                onClick={() => setActiveTab('top')}
+                            >
+                                <TrendingUp size={14} />
+                                Top Voted
+                            </button>
                         </div>
                     </div>
                     
@@ -217,7 +346,7 @@ const UploadSkill = () => {
                             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#fac638] mx-auto"></div>
                             <p className="mt-4 text-[#1c1b0d]">Loading amazing skills...</p>
                         </div>
-                    ) : filteredSkills.length === 0 ? (
+                    ) : sortedSkills.length === 0 ? (
                         <div className="text-center py-12 bg-white/50 rounded-2xl shadow-sm">
                             <Users size={48} className="mx-auto text-yellow-400 mb-4" />
                             <h3 className="text-xl font-semibold text-[#1c1b0d] mb-2">No skills yet</h3>
@@ -230,43 +359,98 @@ const UploadSkill = () => {
                         </div>
                     ) : (
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            {filteredSkills.map((skill) => (
-                                <div
-                                    key={skill.id}
-                                    className="bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-6 hover:transform hover:scale-105 transition-all duration-300 border border-white relative group overflow-hidden"
-                                >
-                                    {/* Decorative corner */}
-                                    <div className="absolute top-0 right-0 w-16 h-16 overflow-hidden">
-                                        <div className="absolute transform rotate-45 bg-yellow-100 text-center text-white w-24 h-10 right-0 top-0 -mr-7 mt-3 flex items-center justify-center">
-                                            <span className="text-xs text-yellow-600 font-bold">{skill.profiles?.username?.charAt(0) || 'A'}</span>
+                            {sortedSkills.map((skill) => {
+                                const voteCount = skill.votes ? skill.votes.length : 0;
+                                const hasVoted = user && skill.votes && skill.votes.includes(user.id);
+                                const isAnimating = voteAnimations[skill.id];
+                                
+                                return (
+                                    <div
+                                        key={skill.id}
+                                        className="bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-6 hover:transform hover:scale-105 transition-all duration-300 border border-white relative group overflow-hidden"
+                                    >
+                                        {/* Vote button with enhanced UI */}
+                                        <div className="absolute top-4 left-4 z-10">
+                                            <button
+                                                onClick={() => handleVote(skill.id)}
+                                                disabled={voting[skill.id] || !user}
+                                                className={`flex flex-col items-center justify-center w-12 h-12 rounded-full transition-all relative ${
+                                                    hasVoted 
+                                                        ? 'bg-gradient-to-br from-yellow-400 to-yellow-500 text-white shadow-lg' 
+                                                        : 'bg-white/90 text-gray-500 hover:bg-yellow-50 hover:text-yellow-500 shadow-md'
+                                                } ${voting[skill.id] ? 'opacity-70 cursor-not-allowed' : ''} ${
+                                                    isAnimating ? 'animate-bounce' : ''
+                                                }`}
+                                            >
+                                                {voting[skill.id] ? (
+                                                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-current"></div>
+                                                ) : (
+                                                    <>
+                                                        <ChevronUp size={20} className={hasVoted ? 'fill-white' : ''} />
+                                                        <span className="text-sm font-bold mt-[-2px]">{voteCount}</span>
+                                                    </>
+                                                )}
+                                                {/* Sparkle animation when voted */}
+                                                {isAnimating && (
+                                                    <>
+                                                        <div className="absolute -top-1 -right-1">
+                                                            <Sparkles size={12} className="text-yellow-500 animate-ping" />
+                                                        </div>
+                                                        <div className="absolute -bottom-1 -left-1">
+                                                            <Sparkles size={10} className="text-yellow-500 animate-ping delay-150" />
+                                                        </div>
+                                                    </>
+                                                )}
+                                            </button>
+                                        </div>
+                                        
+                                        {/* Popularity badge for highly voted skills */}
+                                        {voteCount >= 5 && (
+                                            <div className="absolute top-4 right-4 bg-gradient-to-r from-yellow-500 to-orange-500 text-white text-xs px-2 py-1 rounded-full flex items-center gap-1 z-10">
+                                                <Flame size={12} />
+                                                <span>Popular</span>
+                                            </div>
+                                        )}
+                                        
+                                        {/* Decorative corner */}
+                                        <div className="absolute top-0 right-0 w-16 h-16 overflow-hidden">
+                                            <div className="absolute transform rotate-45 bg-yellow-100 text-center text-white w-24 h-10 right-0 top-0 -mr-7 mt-3 flex items-center justify-center">
+                                                <span className="text-xs text-yellow-600 font-bold">{skill.profiles?.username?.charAt(0) || 'A'}</span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div className="flex items-start justify-between mb-3 ml-14">
+                                            <h3 className="text-lg font-bold text-[#1c1b0d] group-hover:text-yellow-600 transition-colors line-clamp-1">{skill.title}</h3>
+                                        </div>
+                                        <div className="flex items-center text-xs text-[#6b7280] mb-3 ml-14">
+                                            <span className="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full">
+                                                @{skill.profiles?.username || 'Anonymous'}
+                                            </span>
+                                            <span className="mx-2">•</span>
+                                            <Clock size={12} className="mr-1" />
+                                            <span>Recently added</span>
+                                        </div>
+                                        <p className="text-[#4b4b4b] mb-4 line-clamp-3 ml-14">{skill.description}</p>
+                                        <div className="flex justify-between items-center mt-4">
+                                            {skill.video_url && (
+                                                <a
+                                                    href={skill.video_url}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="inline-flex items-center text-[#f59e0b] hover:text-[#fbbf24] transition-colors font-medium text-sm group/video"
+                                                >
+                                                    <ExternalLink size={16} className="mr-1 group-hover/video:translate-x-1 transition-transform" />
+                                                    Watch Video
+                                                </a>
+                                            )}
+                                            <div className="flex items-center gap-1 text-xs text-gray-500">
+                                                <TrendingUp size={12} />
+                                                <span>{voteCount} vote{voteCount !== 1 ? 's' : ''}</span>
+                                            </div>
                                         </div>
                                     </div>
-                                    
-                                    <div className="flex items-start justify-between mb-3">
-                                        <h3 className="text-lg font-bold text-[#1c1b0d] group-hover:text-yellow-600 transition-colors line-clamp-1">{skill.title}</h3>
-                                    </div>
-                                    <div className="flex items-center text-xs text-[#6b7280] mb-3">
-                                        <span className="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full">
-                                            @{skill.profiles?.username || 'Anonymous'}
-                                        </span>
-                                        <span className="mx-2">•</span>
-                                        <Clock size={12} className="mr-1" />
-                                        <span>Recently added</span>
-                                    </div>
-                                    <p className="text-[#4b4b4b] mb-4 line-clamp-3">{skill.description}</p>
-                                    {skill.video_url && (
-                                        <a
-                                            href={skill.video_url}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="inline-flex items-center text-[#f59e0b] hover:text-[#fbbf24] transition-colors font-medium text-sm group/video"
-                                        >
-                                            <ExternalLink size={16} className="mr-1 group-hover/video:translate-x-1 transition-transform" />
-                                            Watch Video
-                                        </a>
-                                    )}
-                                </div>
-                            ))}
+                                );
+                            })}
                         </div>
                     )}
                 </div>
