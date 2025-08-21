@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import Layout from '@/components/Layout/Layout';
+import React, { useState } from "react";
+import Layout from "@/components/Layout/Layout";
 import { ThumbsUp, Crown, TrendingUp, Medal } from "lucide-react";
-import { initialLeaderboardData } from '@/constants';
-
+import { initialLeaderboardData } from "@/constants";
+import { ConfettiSideCannons } from "@/components/magicui/confettiCanon"; // Import the new confetti component
 
 const LeaderboardPage = () => {
   const [leaderboardData, setLeaderboardData] = useState(initialLeaderboardData);
@@ -37,12 +37,10 @@ const LeaderboardPage = () => {
         <div className="w-full max-w-4xl bg-gradient-to-tr from-[#fffaf0] via-[#fff8e7] to-[#ffd768] rounded-2xl shadow-xl p-8">
           {/* Heading */}
           <div className="text-center mb-8">
-            <h2 className="text-[#1c1b0d] text-3xl font-extrabold leading-tight flex items-center justify-center gap-2">
-              <Crown size={28} className="text-yellow-600" /> 
-              Useless Skills Leaderboard
-              <Crown size={28} className="text-yellow-600" />
-            </h2>
-            <p className="text-[#6b6606] mt-2 flex items-center justify-center gap-1">
+            {/* Use the ConfettiSideCannons component for the side cannons effect */}
+            <ConfettiSideCannons /> {/* Add this line to trigger side cannons confetti */}
+            {/* <Crown size={28} className="text-yellow-600" />  */}
+            <p className="text-[#6b6606] mt-2 flex items-center justify-center gap-1">``
               <TrendingUp size={16} /> Vote for the most useless skill!
             </p>
           </div>

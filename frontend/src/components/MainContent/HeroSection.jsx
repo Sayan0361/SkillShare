@@ -1,6 +1,7 @@
 import React from "react";
 import FeaturedImage from "./FeaturedImage";
 import { ScratchToReveal } from "@/components/magicui/scratch-to-reveal";
+import "@/App.css";
 
 const HeroSection = () => {
   return (
@@ -11,7 +12,7 @@ const HeroSection = () => {
           {/* Left Side: Text Content */}
           <div className="text-left">
             {/* Title */}
-            <h1 className="text-[#1c1b0d] font-extrabold leading-tight text-3xl sm:text-5xl md:text-6xl tracking-tight">
+            <h1 className="wiggle text-[#1c1b0d] font-extrabold leading-tight text-3xl sm:text-5xl md:text-6xl tracking-tight">
               Show Off Your{" "}
               <span className="text-[#f59e0b] relative">
                 Most Useless Skill!
