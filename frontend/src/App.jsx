@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import Home from './pages/Home';
 import UploadSkill from './pages/UploadSkill';
 import SignIn from './pages/SignIn';
-import SignUp from './pages/SignUp';
+import SignUp from './pages/Signup';
 import LeaderboardPage from './pages/LeaderboardPage';
 import ChallengeMode from './pages/ChallengeMode';
 import HallOfFame from './pages/HallOfFame';

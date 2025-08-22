@@ -5,6 +5,7 @@ import { Menu, X, LogOut, User } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../lib/AuthContext";
 import { supabase } from "../../../config/supabase.js";
+import "@/App.css";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -35,7 +36,8 @@ const Header = () => {
         {/* Logo + Title */}
         <div
           onClick={() => navigate("/")}
-          className="flex items-center gap-2 cursor-pointer hover:opacity-90 transition"
+          className="flex items-center gap-2 cursor-pointer hover:opacity-90 transition
+          "
         >
           <Logo />
           <h2 className="text-base sm:text-lg font-bold tracking-[-0.015em] text-[#1c180d]">

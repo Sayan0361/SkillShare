@@ -40,3 +40,17 @@
 .read-the-docs {
   color: #888;
 }
+
+@keyframes wiggle {
+    0% { transform: rotate(-5deg); }
+    25% { transform: rotate(5deg); }
+    50% { transform: rotate(-5deg); }
+    75% { transform: rotate(5deg); }
+    100% { transform: rotate(0); }
+  }
+  
+  .wiggle:hover {
+    animation: wiggle 0.5s ease-in-out;
+  }
+  
+  
