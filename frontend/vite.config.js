@@ -15,7 +15,7 @@ export default defineConfig({
   },
 
   // Set base path for deployment
-  base: '/frontend/', // Path relative to your server root
+  // base: '/frontend/', // Path relative to your server root
 
   // Build options
   build: {

@@ -2,13 +2,14 @@ import React from "react";
 import FeaturedImage from "./FeaturedImage";
 import { ScratchToReveal } from "@/components/magicui/scratch-to-reveal";
 import "@/App.css";
+import { SmoothCursor } from "../ui/smooth-cursor";
 
 const HeroSection = () => {
   return (
     <section className="relative overflow-hidden w-full">
       <div className="px-4 sm:px-6 lg:px-12 py-20 max-w-7xl mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          
+          <SmoothCursor/>
           {/* Left Side: Text Content */}
           <div className="text-left">
             {/* Title */}
