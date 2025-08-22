@@ -2,7 +2,10 @@
 
 A modern, interactive learning platform built with React, Vite, and Supabase. SkillShare connects learners with experts through an engaging and intuitive interface.
 
-![SkillShare Banner](https://via.placeholder.com/1200x400/4F46E5/FFFFFF?text=SkillShare+Platform)
+## Demo Video
+
+https://github.com/user-attachments/assets/b6ad88be-5899-486e-9bfa-3b4b12e7cb78
+
 
 ## ✨ Features
 
